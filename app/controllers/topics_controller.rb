@@ -4,7 +4,13 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    # @topics = Topic.all
+    @topics = Topic.sorted #run sorted method from models/topics.rb
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @topics }
+    end
   end
 
   # GET /topics/1
