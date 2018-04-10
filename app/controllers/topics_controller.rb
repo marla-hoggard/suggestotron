@@ -69,16 +69,17 @@ class TopicsController < ApplicationController
 
   def upvote
     @topic = Topic.find(params[:id])
-    @topic.votes.create
+    @topic.upvote
     redirect_to(topics_path)
   end
 
   def downvote
     @topic = Topic.find(params[:id])
-    if @topic.votes.count > 0
-      @topic.votes.first.destroy
-    end
+    @topic.downvote
     redirect_to(topics_path)
+  end
+
+  def about
   end
 
   private

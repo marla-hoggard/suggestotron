@@ -13,6 +13,16 @@ class Topic < ApplicationRecord
 		)
 	end
 
+	def upvote
+	    votes.create
+	end
+
+	def downvote
+	    if votes.count > 0
+	    	votes.first.destroy
+	    end
+	end
+
 	#The above SQL counts the votes and creates a column "votes_count"
 	#This says that if we have that attribute, use it, otherwise compute it
 	def votes_count
